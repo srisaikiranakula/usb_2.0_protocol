@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="usb_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="usb_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="38596575fs"></ZoomEndTime>
+      <Cursor1Time time="61000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="326"></NameColumnWidth>
+      <ValueColumnWidth column_width="159"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/usb_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/D_pos_input" type="logic">
+      <obj_property name="ElementShortName">D_pos_input</obj_property>
+      <obj_property name="ObjectShortName">D_pos_input</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/D_neg_input" type="logic">
+      <obj_property name="ElementShortName">D_neg_input</obj_property>
+      <obj_property name="ObjectShortName">D_neg_input</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/input_tsm" type="array">
+      <obj_property name="ElementShortName">input_tsm[7:0]</obj_property>
+      <obj_property name="ObjectShortName">input_tsm[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/data_clock_rcv" type="logic">
+      <obj_property name="ElementShortName">data_clock_rcv</obj_property>
+      <obj_property name="ObjectShortName">data_clock_rcv</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/data_bus_pos" type="logic">
+      <obj_property name="ElementShortName">data_bus_pos</obj_property>
+      <obj_property name="ObjectShortName">data_bus_pos</obj_property>
+   </wvobject>
+   <wvobject fp_name="/usb_tb/data_bus_neg" type="logic">
+      <obj_property name="ElementShortName">data_bus_neg</obj_property>
+      <obj_property name="ObjectShortName">data_bus_neg</obj_property>
+   </wvobject>
+</wave_config>
