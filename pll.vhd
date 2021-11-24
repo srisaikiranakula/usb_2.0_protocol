@@ -24,7 +24,7 @@ begin
             prev_in <= '0';
         elsif(system_clock'event and system_clock = '1') then
             if( (prev_in xor d_in) = '1' ) then
-                if(count >= 30) then count <= 0;
+                if(count >= 30) then count <= 1;
                 end if;
             else
                 count <= count+1;

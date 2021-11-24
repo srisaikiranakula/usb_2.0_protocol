@@ -9,6 +9,7 @@ port (  clk : in std_logic;                             -- system clock 50Mhz = 
         D_neg : in std_logic;                           -- D- input signal host
         input_tsm : in std_logic_vector(7 downto 0);    -- Input data to the transmitter so that when trasnmitter is enabled it will send this data
         data_clock_rcv : inout std_logic;               -- Data clock 50/32Mhz = 1.5625 Mhz = 640ns
+        data_clock_tsm : in std_logic;
         data_bus_pos            : inout std_logic;        -- D+ output signal bus 
         data_bus_neg            : inout std_logic);       -- D+ output signal bus
 end usb;
@@ -132,7 +133,7 @@ ctrl_1 : controller port map(   clk => clk,
 
 tsm_1 : transmitter port map(   input_data => input_tsm,
                                 clk => clk,
-                                data_clk => data_clock_rcv,
+                                data_clk => data_clock_tsm,
                                 transmit_select => transmit_select_tsm,
                                 rst => rst,
                                 transmitter_enable => transmitter_enable_tsm,
