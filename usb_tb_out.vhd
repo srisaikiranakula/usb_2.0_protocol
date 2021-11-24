@@ -1,50 +1,25 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 23.11.2021 15:10:17
--- Design Name: 
--- Module Name: usb_tb_out - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity usb_tb_out is
 --  Port ( );
 end usb_tb_out;
 
 architecture Behavioral of usb_tb_out is
+
 component usb is
-port (  clk : in std_logic;
-        rst : in std_logic;
-        D_pos: in std_logic;
-        D_neg : in std_logic;
-        input_tsm : in std_logic_vector(7 downto 0);
-        data_clock_rcv : inout std_logic; 
-        data_bus_pos            : inout std_logic;
-        data_bus_neg            : inout std_logic);
+port (  clk : in std_logic;                             -- system clock 50Mhz = 20ns 
+        rst : in std_logic;                             -- system reset
+        D_pos : in std_logic;                           -- D+ input signal host
+        D_neg : in std_logic;                           -- D- input signal host
+        input_tsm : in std_logic_vector(7 downto 0);    -- Input data to the transmitter so that when trasnmitter is enabled it will send this data
+        data_clock_rcv : inout std_logic;               -- Data clock 50/32Mhz = 1.5625 Mhz = 640ns
+        data_clock_tsm : in std_logic;
+        data_bus_pos            : inout std_logic;        -- D+ output signal bus 
+        data_bus_neg            : inout std_logic);       -- D+ output signal bus
 end component;
 
 signal clk,rst : std_logic;
@@ -54,6 +29,7 @@ signal D_pos_input : std_logic;
 signal D_neg_input : std_logic;
 signal data_bus_pos : std_logic;
 signal data_bus_neg : std_logic;
+signal data_clock_tsm : std_logic;
 begin
 
 dut : usb port map( clk => clk,
@@ -63,16 +39,25 @@ dut : usb port map( clk => clk,
                     data_bus_pos => data_bus_pos,
                     data_bus_neg => data_bus_neg,
                     input_tsm => input_tsm,
+                    data_clock_tsm => data_clock_tsm,
                     data_clock_rcv => data_clock_rcv);
 
-    clock : process
+    system_clock : process
     begin
         clk <= '0';
         wait for 10ns;
         clk <= '1';
         wait for 10ns;
-    end process clock;
+    end process system_clock;
 
+    data_clock : process
+    begin
+        data_clock_tsm <= '0';
+        wait for 320ns;
+        data_clock_tsm <= '1';
+        wait for 320ns;
+    end process data_clock;
+    
     reset : process
     begin
     rst <= '1';

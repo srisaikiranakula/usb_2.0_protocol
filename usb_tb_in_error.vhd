@@ -4,12 +4,11 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 
-entity usb_tb_in is
+entity usb_tb_in_error is
 --  Port ( );
-end usb_tb_in;
+end usb_tb_in_error;
 
-architecture Behavioral of usb_tb_in is
-
+architecture Behavioral of usb_tb_in_error is
 component usb is
 port (  clk : in std_logic;                             -- system clock 50Mhz = 20ns 
         rst : in std_logic;                             -- system reset
@@ -156,7 +155,8 @@ dut : usb port map( clk => clk,
         D_neg_input <= '1';
         wait for 640ns;
         
-        --endp f7
+        --correct endp f7
+        -- given endp f3
         D_pos_input <= '0';
         D_neg_input <= '1';
         wait for 640ns;
@@ -175,8 +175,8 @@ dut : usb port map( clk => clk,
         D_pos_input <= '0';
         D_neg_input <= '1';
         wait for 640ns;
-        D_pos_input <= '0';
-        D_neg_input <= '1';
+        D_pos_input <= '1';
+        D_neg_input <= '0';
         wait for 640ns;
         D_pos_input <= '0';
         D_neg_input <= '1';
